@@ -1,13 +1,7 @@
-'use strict';
-
 import React, { Component } from 'react';
-
 import {
-    AppRegistry,
     StyleSheet,
     Text,
-    TouchableOpacity,
-    Linking
 } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
@@ -20,10 +14,10 @@ export class ScanScreen extends Component {
     }
 
     onSuccess = e => {
-        console.log({ data: JSON.parse(e.data) })
-        this.setState({ data: e.data })
-        console.count('Detect')
-        scanner.reactivate()
+        this.setState({ data: e.data });
+        setTimeout(() => {
+            scanner.reactivate();
+        })
     };
 
     render() {
