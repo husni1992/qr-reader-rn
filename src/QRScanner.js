@@ -15,9 +15,13 @@ import { RNCamera } from 'react-native-camera';
 
 let scanner;
 export class ScanScreen extends Component {
+    state = {
+        data: "test"
+    }
 
     onSuccess = e => {
         console.log({ data: JSON.parse(e.data) })
+        this.setState({ data: e.data })
         console.count('Detect')
         scanner.reactivate()
     };
@@ -36,9 +40,7 @@ export class ScanScreen extends Component {
           </Text>
                 }
                 bottomContent={
-                    <TouchableOpacity style={styles.buttonTouchable}    >
-                        <Text style={styles.buttonText}>OK. Got it!</Text>
-                    </TouchableOpacity>
+                    <Text>{this.state.data}</Text>
                 }
             />
         );
